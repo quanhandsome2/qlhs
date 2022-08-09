@@ -1,4 +1,4 @@
-django
+# django
 django-heroku
 gunicorn
 asgiref==3.2.7
@@ -7,3 +7,4 @@ django-widget-tweaks==1.4.8
 pytz==2020.1
 sqlparse==0.3.1
 pandas
+psycopg2==2.8.6
