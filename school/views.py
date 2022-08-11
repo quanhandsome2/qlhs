@@ -36,6 +36,35 @@ list_lop =[]                            # Các object của Lớp
 list_hs=[]                                 # Các object của HS
 
 
+def import_nk(request):
+    try:
+        if request.method=="POST" and request.FILES['myfile2']:
+            myfile = request.FILES['myfile2']
+            print("myfile2",myfile)
+            print("myfile2.name",myfile.name)
+            fs = FileSystemStorage()
+            filename = fs.save(myfile.name, myfile)
+            print("filename",filename)
+            uploaded_file_url = fs.url(filename)
+            excel_file = uploaded_file_url
+            print("excel_file",excel_file)
+            # empexceldata = pd.read_excel("." + excel_file, encoding='utf-8')        
+            empexceldata = pd.read_excel("." + excel_file) 
+            print(empexceldata)
+            df = empexceldata
+
+            for i in range(len(df)):   
+                #Update Điểm 
+                nk = models.Nien_khoa.objects.get(id=df.loc[i,"id"])
+                nk.nien_khoa = df.loc[i,'nien_khoa']
+                nk.nien_khoa_tit = df.loc[i,'nien_khoa_tit']
+                nk.save()
+
+    except Exception as identifier:
+        print(identifier)
+    return render(request, 'school/admin_import_diem.html')
+
+
 def search_hs(request):
     
     global khoi_id_selected

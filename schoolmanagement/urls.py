@@ -19,6 +19,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home_view,name=''),
 
+    path('import_nk', views.import_nk, name="import_nk"),
+
+
     path('adminclick', views.adminclick_view),
     path('teacherclick', views.teacherclick_view),
     path('studentclick', views.studentclick_view),
