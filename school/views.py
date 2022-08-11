@@ -55,9 +55,10 @@ def import_nk(request):
 
             for i in range(len(df)):   
                 #Update Điểm 
-                nk = models.Nien_khoa.objects.get(id=df.loc[i,"id"])
-                nk.nien_khoa = df.loc[i,'nien_khoa']
-                nk.nien_khoa_tit = df.loc[i,'nien_khoa_tit']
+                nk = models.Nien_khoa.objects.create(
+                    nien_khoa = df.loc[i,'nien_khoa'],
+                    nien_khoa_tit = df.loc[i,'nien_khoa_tit'] ,                   
+                )
                 nk.save()
 
     except Exception as identifier:
