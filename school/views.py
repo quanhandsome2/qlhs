@@ -22,7 +22,7 @@ from django.contrib.auth.models import User
 # tìm kiếm
 from django.db.models import Q
 from django.contrib import messages
-
+import openpyxl
 
 # Code tự làm
 khoi_id_selected = "5"                   # id của khối được chọn
