@@ -55,7 +55,7 @@ def add_nk(request):
                 nien_khoa_tit = nien_khoa_tit      
             )
             hoc_sinh.save()
-    return
+    return render(request,'school/admin_import_nk.html')
 
 def import_nk(request):
     try:
