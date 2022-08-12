@@ -57,7 +57,7 @@ def add_nk(request):
             nk = models.TeacherExtra.objects.create(
                 ten_gv = ten_gv,                        
                 salary = salary,
-                join_date = joindate,
+                joindate = joindate,
                 mobile = mobile,
                 gioi_tinh = gioi_tinh,
                 ma_gv =ma_gv,
