@@ -80,8 +80,8 @@ WSGI_APPLICATION = 'schoolmanagement.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.herokupostgresql',
-        'NAME': os.path.join(BASE_DIR, 'herokupostgresql'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.path.join(BASE_DIR, 'postgresql'),
     }
 }
 
