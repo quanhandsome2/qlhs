@@ -55,7 +55,7 @@ def add_nk(request):
             ma_gv = df.loc[i,'ma_gv']
             ten_gv = df.loc[i,'ten_gv']
             phone = df.loc[i,'phone']
-            user = df.loc[i,'user']
+            user = df.loc[i,'user_id']
             nk = models.TeacherExtra.objects.create(
                 ten_gv = ten_gv,                        
                 salary = salary,
