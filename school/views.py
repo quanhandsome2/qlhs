@@ -48,12 +48,20 @@ def add_nk(request):
         print(df)
 
         for i in range(len(df)):                                 
-            nien_khoa = df.loc[i, "nien_khoa"] 
-            nien_khoa_tit = df.loc[i, "nien_khoa_tit"]      
-
-            nk = models.Nien_khoa.objects.create(
-                nien_khoa = nien_khoa,                        
-                nien_khoa_tit = nien_khoa_tit      
+            salary = df.loc[i, "salary"] 
+            join_date = df.loc[i, "join_date"]      
+            mobile = df.loc[i,'mobile']
+            gioi_tinh = df.loc[i,'gioi_tinh']
+            ma_gv = df.loc[i,'ma_gv']
+            
+            ten_gv = df.loc[i,'ten_gv']
+            nk = models.TeacherExtra.objects.create(
+                ten_gv = ten_gv,                        
+                salary = salary,
+                join_date = join_date,
+                mobile = mobile,
+                gioi_tinh = gioi_tinh,
+                ma_gv =ma_gv      
             )
             nk.save()
     return render(request,'school/admin_import_nk.html')
