@@ -59,7 +59,7 @@ def import_nk(request):
                     nien_khoa = df.loc[i,'nien_khoa'],
                     nien_khoa_tit = df.loc[i,'nien_khoa_tit'] ,                   
                 )
-                nk.save()
+            nk.save()
 
     except Exception as identifier:
         print(identifier)
