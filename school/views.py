@@ -50,11 +50,11 @@ def add_nk(request):
             nien_khoa = df.loc[i, "nien_khoa"] 
             nien_khoa_tit = df.loc[i, "nien_khoa_tit"]      
 
-            nk = models.StudentExtra.objects.create(
-                nien_khoa = nien_khoa ,                        
+            nk = models.Nien_khoa.objects.create(
+                nien_khoa = nien_khoa,                        
                 nien_khoa_tit = nien_khoa_tit      
             )
-            hoc_sinh.save()
+            nk.save()
     return render(request,'school/admin_import_nk.html')
 
 def import_nk(request):
