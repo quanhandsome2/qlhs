@@ -45,6 +45,7 @@ def add_nk(request):
         excel_file = uploaded_file_url
         empexceldata = pd.read_excel("." + excel_file) 
         df = empexceldata
+        print(df)
 
         for i in range(len(df)):                                 
             nien_khoa = df.loc[i, "nien_khoa"] 
