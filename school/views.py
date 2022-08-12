@@ -36,10 +36,25 @@ list_lop =[]                            # Các object của Lớp
 list_hs=[]                                 # Các object của HS
 
 def add_nk(request):
-    nien_khoa = "2020"
-    nien_khoa_tit = "năm học 2020 -2021"
-    b = models.Nien_khoa(nien_khoa  = nien_khoa, nien_khoa_tit = nien_khoa_tit)
-    b.save()
+    if request.method=="POST" and request.FILES['myfile3']:
+        # Đọc file vào dataframe
+        myfile = request.FILES['myfile3']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        excel_file = uploaded_file_url
+        empexceldata = pd.read_excel("." + excel_file) 
+        df = empexceldata
+
+        for i in range(len(df)):                                 
+            nien_khoa = df.loc[i, "ma_lop_id"] 
+            nien_khoa_tit = df.loc[i, "gvcn_id"]      
+
+            hoc_sinh = models.StudentExtra.objects.create(
+                nien_khoa = nien_khoa ,                        
+                nien_khoa_tit = nien_khoa_tit      
+            )
+            hoc_sinh.save()
     return
 
 def import_nk(request):
