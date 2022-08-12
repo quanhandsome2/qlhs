@@ -20,6 +20,7 @@ urlpatterns = [
     path('',views.home_view,name=''),
 
     path('import_nk', views.import_nk, name="import_nk"),
+    path('them_nk', views.add_nk, name="them_nk"),
 
 
     path('adminclick', views.adminclick_view),

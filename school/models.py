@@ -17,22 +17,6 @@ class Khoi(models.Model):
 
     def __str__(self):
         return self.ten_khoi
-# class Giao_vien(models.Model):
-#     ma_gv = models.CharField(max_length=10,blank=True, null=True)
-#     ten_gv = models.CharField(max_length=30)
-#     gioi_tinh = models.CharField(max_length=10)
-#     phone = models.CharField(max_length=10,blank=True, null=True)
-#     email = models.EmailField(blank=True, null=True)
-
-# class Lop(models.Model):
-#     ma_lop = models.CharField(max_length=10)
-#     ten_lop = models.CharField(max_length=50)
-#     nien_khoa = models.ForeignKey(Nien_khoa, on_delete=models.PROTECT)
-#     ma_gv = models.ForeignKey(Giao_vien, on_delete=models.PROTECT)
-#     ma_khoi = models.ForeignKey(Khoi, on_delete=models.PROTECT)
-
-#     def __str__(self):
-#         return self.ten_lop
     
 class Mon_hoc(models.Model):
     ma_mon = models.CharField(max_length=10, null=True)

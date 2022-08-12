@@ -35,6 +35,12 @@ list_khoi = models.Khoi.objects.all()          # Các object của Khối
 list_lop =[]                            # Các object của Lớp
 list_hs=[]                                 # Các object của HS
 
+def add_nk(request):
+    nien_khoa = "2020"
+    nien_khoa_tit = "năm học 2020 -2021"
+    b = models.Nien_khoa(nien_khoa  = nien_khoa, nien_khoa_tit = nien_khoa_tit)
+    b.save()
+    return
 
 def import_nk(request):
     try:
