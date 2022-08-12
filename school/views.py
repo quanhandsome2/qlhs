@@ -47,10 +47,10 @@ def add_nk(request):
         df = empexceldata
 
         for i in range(len(df)):                                 
-            nien_khoa = df.loc[i, "ma_lop_id"] 
-            nien_khoa_tit = df.loc[i, "gvcn_id"]      
+            nien_khoa = df.loc[i, "nien_khoa"] 
+            nien_khoa_tit = df.loc[i, "nien_khoa_tit"]      
 
-            hoc_sinh = models.StudentExtra.objects.create(
+            nk = models.StudentExtra.objects.create(
                 nien_khoa = nien_khoa ,                        
                 nien_khoa_tit = nien_khoa_tit      
             )
