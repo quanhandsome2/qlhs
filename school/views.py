@@ -63,7 +63,7 @@ def add_nk(request):
                 mobile = mobile,
                 gioi_tinh = gioi_tinh,
                 ma_gv =ma_gv,
-                user =user_id,
+                user_id =user_id,
                 phone = phone,
             )
             nk.save()
