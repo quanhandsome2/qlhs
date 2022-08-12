@@ -63,7 +63,7 @@ def import_nk(request):
 
     except Exception as identifier:
         print(identifier)
-    return render(request, 'school/admin_import_diem.html')
+    return render(request, 'school/admin_import_hs.html')
 
 
 def search_hs(request):
