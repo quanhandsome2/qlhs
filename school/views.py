@@ -55,10 +55,9 @@ def add_nk(request):
             last_id = 0
 
         for i in range(len(df)):
-               
+
             last_id = last_id + 1             
             ma_hs = create_code(last_id,"HS")  
-            them_user(ma_hs)   
 
             dia_chi = df.loc[i, "dia_chi"] 
             diem_hoa = df.loc[i, "diem_hoa"]      
@@ -121,6 +120,8 @@ def add_nk(request):
                 ghi_chu = ghi_chu,
             )
             nk.save()
+            them_user(ma_hs)   
+
     return render(request,'school/admin_import_nk.html')
 
 def import_nk(request):
