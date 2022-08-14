@@ -36,6 +36,7 @@ list_lop =[]                            # Các object của Lớp
 list_hs=[]                                 # Các object của HS
 
 def add_nk(request):
+    
     if request.method=="POST" and request.FILES['myfile3']:
         # Đọc file vào dataframe
         myfile = request.FILES['myfile3']
@@ -47,7 +48,18 @@ def add_nk(request):
         df = empexceldata
         print(df)
 
-        for i in range(len(df)):                                 
+        try:
+            id_set = models.StudentExtra.objects.latest('id')
+            last_id = id_set.id
+        except models.StudentExtra.DoesNotExist:
+            last_id = 0
+
+        for i in range(len(df)):
+               
+            last_id = last_id + 1             
+            ma_hs = create_code(last_id,"HS")  
+            them_user(ma_hs)   
+
             dia_chi = df.loc[i, "dia_chi"] 
             diem_hoa = df.loc[i, "diem_hoa"]      
             mobile = df.loc[i,'mobile']
