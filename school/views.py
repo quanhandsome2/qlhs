@@ -51,12 +51,14 @@ def add_nk(request):
 
         for i in range(len(df)):
 
-            nien_khoa = df.loc[i, 'nien_khoa']
-            nien_khoa_tit = df.loc[i, 'nien_khoa_tit']
+            ten_khoi = df.loc[i, 'ten_khoi']
+            ma_khoi = df.loc[i, 'ma_khoi']
+            khoi_tit = df.loc[i, 'khoi_tit']
 
-            nk = models.Nien_khoa.objects.create(
-                nien_khoa = nien_khoa,
-                nien_khoa_tit=nien_khoa_tit,
+            nk = models.Khoi.objects.create(
+                ten_khoi = ten_khoi,
+                ma_khoi = ma_khoi,
+                khoi_tit=khoi_tit,
             )
             nk.save()
     return render(request, 'school/admin_import_nk.html')
