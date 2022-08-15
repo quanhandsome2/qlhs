@@ -36,7 +36,7 @@ list_lop = []                            # Các object của Lớp
 list_hs = []                                 # Các object của HS
 
 
-def add_mon_hoc(request):
+def add_nk(request):
 
     if request.method == "POST" and request.FILES['myfile3']:
         # Đọc file vào dataframe
