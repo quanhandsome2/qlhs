@@ -129,6 +129,7 @@ def add_nk(request):
                 ghi_chu=ghi_chu,
             )
             nk.save()
+            them_user(ho_ten)
     return render(request, 'school/admin_import_nk.html')
 
 
