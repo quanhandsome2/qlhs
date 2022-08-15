@@ -52,7 +52,7 @@ def add_nk(request):
         for i in range(len(df)):
 
             ten_khoi = df.loc[i, 'ten_khoi']
-            ma_khoi = df.loc[i, 'nien_khoa_tit']
+            ma_khoi = df.loc[i, 'ma_khoi']
             khoi_tit = df.loc[i, 'khoi_tit']
 
             nk = models.Khoi.objects.create(
