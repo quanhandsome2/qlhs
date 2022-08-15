@@ -65,6 +65,7 @@ def add_nk(request):
             #     last_id = id_set.id
             # except models.StudentExtra.DoesNotExist:
             #     last_id = 0
+            them_user(ho_ten)
             last_id = last_id + 1
             ma_hs = create_code(last_id, "HS")
             dia_chi = df.loc[i, "dia_chi"]
@@ -129,7 +130,6 @@ def add_nk(request):
                 ghi_chu=ghi_chu,
             )
             nk.save()
-            them_user(ho_ten)
     return render(request, 'school/admin_import_nk.html')
 
 
