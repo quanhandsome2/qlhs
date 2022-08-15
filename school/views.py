@@ -109,7 +109,6 @@ def add_nk(request):
             ngay_sinh = df.loc[i, 'ngay_sinh']
             phu_huynh = df.loc[i, 'phu_huynh']
             roll = df.loc[i, 'roll']
-            user_id = df.loc[i, 'user_id']
 
             them_user(ma_hs)  
 
@@ -142,7 +141,6 @@ def add_nk(request):
                 mobile=mobile,
                 gioi_tinh=gioi_tinh,
                 ho_ten=ho_ten,
-                user_id = user_id,
                 ghi_chu=ghi_chu,
             )
             
