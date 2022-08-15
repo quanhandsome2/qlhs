@@ -122,3 +122,35 @@ def add_mon_hoc(request):
             )
             nk.save()
     return render(request, 'school/admin_import_nk.html')
+
+def add_lop(request):
+
+    if request.method == "POST" and request.FILES['myfile3']:
+        # Đọc file vào dataframe
+        myfile = request.FILES['myfile3']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        excel_file = uploaded_file_url
+        empexceldata = pd.read_excel("." + excel_file)
+        df = empexceldata
+        print(df)
+
+        for i in range(len(df)):
+
+            ma_lop = df.loc[i, 'ma_lop']
+            ten_lop = df.loc[i, 'ten_lop']
+            ma_khoi_id = df.loc[i, 'ma_khoi_id']
+            nien_khoa_id = df.loc[i, 'ten_mon']
+            ma_gv_id = df.loc[i, 'ma_gv_id']
+
+
+            nk = Lop.objects.create(
+                ma_lop = ma_lop,
+                ten_lop = ten_lop,
+                ma_khoi_id=ma_khoi_id,
+                nien_khoa_id = nien_khoa_id,
+                ma_gv_id = ma_gv_id,
+            )
+            nk.save()
+    return render(request, 'school/admin_import_nk.html')

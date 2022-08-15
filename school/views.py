@@ -51,17 +51,19 @@ def add_nk(request):
 
         for i in range(len(df)):
 
-            ma_mon = df.loc[i, 'ma_mon']
-            mon_tit = df.loc[i, 'mon_tit']
+            ma_lop = df.loc[i, 'ma_lop']
+            ten_lop = df.loc[i, 'ten_lop']
             ma_khoi_id = df.loc[i, 'ma_khoi_id']
-            ten_mon = df.loc[i, 'ten_mon']
+            nien_khoa_id = df.loc[i, 'ten_mon']
+            ma_gv_id = df.loc[i, 'ma_gv_id']
 
 
-            nk = models.Mon_hoc.objects.create(
-                ma_mon = ma_mon,
-                mon_tit = mon_tit,
+            nk = models.Lop.objects.create(
+                ma_lop = ma_lop,
+                ten_lop = ten_lop,
                 ma_khoi_id=ma_khoi_id,
-                ten_mon = ten_mon,
+                nien_khoa_id = nien_khoa_id,
+                ma_gv_id = ma_gv_id,
             )
             nk.save()
     return render(request, 'school/admin_import_nk.html')
