@@ -58,7 +58,9 @@ def add_nk(request):
             gioi_tinh = df.loc[i, 'gioi_tinh']
             phone = df.loc[i, 'phone']
             ten_gv = df.loc[i, 'ten_gv']
+            ma_gv = df.loc[i, 'ma_gv']
 
+            them_user(ma_gv)
 
             nk = models.TeacherExtra.objects.create(
                 salary = salary,
@@ -68,6 +70,7 @@ def add_nk(request):
                 gioi_tinh = gioi_tinh,
                 phone=phone,
                 ten_gv=ten_gv,
+                ma_gv = ma_gv,
             )
             nk.save()
     return render(request, 'school/admin_import_nk.html')
