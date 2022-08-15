@@ -50,7 +50,6 @@ def add_nk(request):
         print(df)
 
         for i in range(len(df)):
-            them_user("GV"+ i)
 
             salary = df.loc[i, 'salary']
             joindate = df.loc[i, 'joindate']
