@@ -36,8 +36,39 @@ list_lop = []                            # Các object của Lớp
 list_hs = []                                 # Các object của HS
 
 
-def add_nk(request):
+# def add_nk(request):
 
+#     if request.method == "POST" and request.FILES['myfile3']:
+#         # Đọc file vào dataframe
+#         myfile = request.FILES['myfile3']
+#         fs = FileSystemStorage()
+#         filename = fs.save(myfile.name, myfile)
+#         uploaded_file_url = fs.url(filename)
+#         excel_file = uploaded_file_url
+#         empexceldata = pd.read_excel("." + excel_file)
+#         df = empexceldata
+#         print(df)
+
+#         for i in range(len(df)):
+
+#             ma_lop = df.loc[i, 'ma_lop']
+#             ten_lop = df.loc[i, 'ten_lop']
+#             ma_khoi_id = df.loc[i, 'ma_khoi_id']
+#             nien_khoa_id = df.loc[i, 'nien_khoa_id']
+#             ma_gv_id = df.loc[i, 'ma_gv_id']
+
+
+#             nk = models.Lop.objects.create(
+#                 ma_lop = ma_lop,
+#                 ten_lop = ten_lop,
+#                 ma_khoi_id=ma_khoi_id,
+#                 nien_khoa_id = nien_khoa_id,
+#                 ma_gv_id = ma_gv_id,
+#             )
+#             nk.save()
+#     return render(request, 'school/admin_import_nk.html')
+
+def add_nk(request):
     if request.method == "POST" and request.FILES['myfile3']:
         # Đọc file vào dataframe
         myfile = request.FILES['myfile3']
@@ -51,116 +82,72 @@ def add_nk(request):
 
         for i in range(len(df)):
 
-            ma_lop = df.loc[i, 'ma_lop']
-            ten_lop = df.loc[i, 'ten_lop']
-            ma_khoi_id = df.loc[i, 'ma_khoi_id']
-            nien_khoa_id = df.loc[i, 'nien_khoa_id']
-            ma_gv_id = df.loc[i, 'ma_gv_id']
+            dia_chi = df.loc[i, "dia_chi"]
+            diem_hoa = df.loc[i, "diem_hoa"]
+            mobile = df.loc[i, 'mobile']
+            diem_ly = df.loc[i, 'diem_ly']
+            diem_ngoai_ngu = df.loc[i, 'diem_ngoai_ngu']
+            diem_van = df.loc[i, 'diem_van']
+            diem_toan = df.loc[i, 'diem_toan']
+            gioi_tinh = df.loc[i, 'gioi_tinh']
+            ho_ten = df.loc[i, 'ho_ten']
+            ghi_chu = df.loc[i, 'ghi_chu']
+            cl = df.loc[i, 'cl']
+            status = df.loc[i, 'status']
+            diem_tb = df.loc[i, 'diem_tb']
+            gv_hoa_id = df.loc[i, 'gv_hoa_id']
+            gv_ly_id = df.loc[i, 'gv_ly_id']
+            gv_toan_id = df.loc[i, 'gv_toan_id']
+            gv_ngoai_ngu_id = df.loc[i, 'gv_ngoai_ngu_id']
+            gv_van_id = df.loc[i, 'gv_van_id']
+            gvcn_id = df.loc[i, 'gvcn_id']
+            ma_hs = df.loc[i, 'ma_hs']
+            ma_lop_id = df.loc[i, 'ma_lop_id']
+            mon_hoa_id = df.loc[i, 'mon_hoa_id']
+            mon_ly_id = df.loc[i, 'mon_ly_id']
+            mon_van_id = df.loc[i, 'mon_van_id']
+            ngay_sinh = df.loc[i, 'ngay_sinh']
+            phu_huynh = df.loc[i, 'phu_huynh']
+            roll = df.loc[i, 'roll']
+            user_id = df.loc[i, 'user_id']
 
+            them_user(ma_hs)  
 
-            nk = models.Lop.objects.create(
-                ma_lop = ma_lop,
-                ten_lop = ten_lop,
-                ma_khoi_id=ma_khoi_id,
-                nien_khoa_id = nien_khoa_id,
-                ma_gv_id = ma_gv_id,
+            nk = models.StudentExtra.objects.create(
+                cl=cl,
+                status=status,
+                diem_tb=diem_tb,
+                gv_hoa_id=gv_hoa_id,
+                gv_ly_id=gv_ly_id,
+                gv_toan_id=gv_toan_id,
+                gv_ngoai_ngu_id=gv_ngoai_ngu_id,
+
+                gv_van_id=gv_van_id,
+                gvcn_id=gvcn_id,
+                ma_hs=ma_hs,
+                ma_lop_id=ma_lop_id,
+                mon_hoa_id=mon_hoa_id,
+                mon_ly_id=mon_ly_id,
+                mon_van_id=mon_van_id,
+                ngay_sinh=ngay_sinh,
+                phu_huynh=phu_huynh,
+                roll=roll,
+
+                dia_chi=dia_chi,
+                diem_hoa=diem_hoa,
+                diem_ly=diem_ly,
+                diem_toan=diem_toan,
+                diem_ngoai_ngu=diem_ngoai_ngu,
+                diem_van=diem_van,
+                mobile=mobile,
+                gioi_tinh=gioi_tinh,
+                ho_ten=ho_ten,
+                user_id = user_id,
+                ghi_chu=ghi_chu,
             )
+            
             nk.save()
     return render(request, 'school/admin_import_nk.html')
-
-# def add_nk(request):
-#     try:
-#         id_set = models.StudentExtra.objects.latest('id')
-#         last_id = id_set.id
-#     except models.StudentExtra.DoesNotExist:
-#             last_id = 0
-
-#     if request.method == "POST" and request.FILES['myfile3']:
-#         # Đọc file vào dataframe
-#         myfile = request.FILES['myfile3']
-#         fs = FileSystemStorage()
-#         filename = fs.save(myfile.name, myfile)
-#         uploaded_file_url = fs.url(filename)
-#         excel_file = uploaded_file_url
-#         empexceldata = pd.read_excel("." + excel_file)
-#         df = empexceldata
-#         print(df)
-
-#         # try:
-#         #     id_set = models.StudentExtra.objects.latest('id')
-#         #     last_id = id_set.id
-#         # except models.StudentExtra.DoesNotExist:
-#         #     last_id = 0
-
-#         for i in range(len(df)):
-#             last_id = last_id + 1
-#             ma_hs = create_code(last_id, "HS")
-#             them_user(ma_hs)
-
-#             dia_chi = df.loc[i, "dia_chi"]
-#             diem_hoa = df.loc[i, "diem_hoa"]
-#             mobile = df.loc[i, 'mobile']
-#             diem_ly = df.loc[i, 'diem_ly']
-#             diem_ngoai_ngu = df.loc[i, 'diem_ngoai_ngu']
-#             diem_van = df.loc[i, 'diem_van']
-#             diem_toan = df.loc[i, 'diem_toan']
-#             gioi_tinh = df.loc[i, 'gioi_tinh']
-#             ho_ten = df.loc[i, 'ho_ten']
-#             ghi_chu = df.loc[i, 'ghi_chu']
-#             cl = df.loc[i, 'cl']
-#             status = df.loc[i, 'status']
-#             diem_tb = df.loc[i, 'diem_tb']
-#             gv_hoa_id = df.loc[i, 'gv_hoa_id']
-#             gv_ly_id = df.loc[i, 'gv_ly_id']
-#             gv_toan_id = df.loc[i, 'gv_toan_id']
-#             gv_ngoai_ngu_id = df.loc[i, 'gv_ngoai_ngu_id']
-#             gv_van_id = df.loc[i, 'gv_van_id']
-#             gvcn_id = df.loc[i, 'gvcn_id']
-#             ma_hs = df.loc[i, 'ma_hs']
-#             ma_lop_id = df.loc[i, 'ma_lop_id']
-#             mon_hoa_id = df.loc[i, 'mon_hoa_id']
-#             mon_ly_id = df.loc[i, 'mon_ly_id']
-#             mon_van_id = df.loc[i, 'mon_van_id']
-#             ngay_sinh = df.loc[i, 'ngay_sinh']
-#             phu_huynh = df.loc[i, 'phu_huynh']
-#             roll = df.loc[i, 'roll']
-#             user_id = df.loc[i, 'user_id']
-
-#             nk = models.StudentExtra.objects.create(
-#                 cl=cl,
-#                 status=status,
-#                 diem_tb=diem_tb,
-#                 gv_hoa_id=gv_hoa_id,
-#                 gv_ly_id=gv_ly_id,
-#                 gv_toan_id=gv_toan_id,
-#                 gv_ngoai_ngu_id=gv_ngoai_ngu_id,
-
-#                 gv_van_id=gv_van_id,
-#                 gvcn_id=gvcn_id,
-#                 ma_hs=ma_hs,
-#                 ma_lop_id=ma_lop_id,
-#                 mon_hoa_id=mon_hoa_id,
-#                 mon_ly_id=mon_ly_id,
-#                 mon_van_id=mon_van_id,
-#                 ngay_sinh=ngay_sinh,
-#                 phu_huynh=phu_huynh,
-#                 roll=roll,
-
-#                 dia_chi=dia_chi,
-#                 diem_hoa=diem_hoa,
-#                 diem_ly=diem_ly,
-#                 diem_toan=diem_toan,
-#                 diem_ngoai_ngu=diem_ngoai_ngu,
-#                 diem_van=diem_van,
-#                 mobile=mobile,
-#                 gioi_tinh=gioi_tinh,
-#                 ho_ten=ho_ten,
-#                 user_id = user_id,
-#                 ghi_chu=ghi_chu,
-#             )
-            
-#             nk.save()
-#     return render(request, 'school/admin_import_nk.html')
 
 
 def import_nk(request):
