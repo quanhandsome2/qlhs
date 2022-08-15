@@ -113,6 +113,7 @@ def add_nk(request):
             them_user(ma_hs)  
 
             nk = models.StudentExtra.objects.create(
+                user_id = User.objects.get(username=ma_hs).id,
                 cl=cl,
                 status=status,
                 diem_tb=diem_tb,
