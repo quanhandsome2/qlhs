@@ -98,7 +98,7 @@ def add_nk(request):
             user_id = df.loc[i, 'user_id']
 
             nk = models.StudentExtra.objects.create(
-                them_user(ho_ten)
+                them_user(ho_ten),
                 cl=cl,
                 status=status,
                 diem_tb=diem_tb,
