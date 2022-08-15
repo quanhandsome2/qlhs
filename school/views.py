@@ -51,26 +51,17 @@ def add_nk(request):
 
         for i in range(len(df)):
 
-            salary = df.loc[i, 'salary']
-            joindate = df.loc[i, 'joindate']
-            mobile = df.loc[i, 'mobile']
-            user = df.loc[i, 'user_id']
-            gioi_tinh = df.loc[i, 'gioi_tinh']
-            phone = df.loc[i, 'phone']
-            ten_gv = df.loc[i, 'ten_gv']
-            ma_gv = df.loc[i, 'ma_gv']
+            ma_mon = df.loc[i, 'ma_mon']
+            mon_tit = df.loc[i, 'mon_tit']
+            ma_khoi_id = df.loc[i, 'ma_khoi_id']
+            ten_mon = df.loc[i, 'ten_mon']
 
-            them_user(ma_gv)
 
-            nk = models.TeacherExtra.objects.create(
-                salary = salary,
-                joindate = joindate,
-                mobile=mobile,
-                user_id = user,
-                gioi_tinh = gioi_tinh,
-                phone=phone,
-                ten_gv=ten_gv,
-                ma_gv = ma_gv,
+            nk = models.Mon_hoc.objects.create(
+                ma_mon = ma_mon,
+                mon_tit = mon_tit,
+                ma_khoi_id=ma_khoi_id,
+                ten_mon = ten_mon,
             )
             nk.save()
     return render(request, 'school/admin_import_nk.html')
