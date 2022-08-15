@@ -50,7 +50,9 @@ def add_nk(request):
         print(df)
 
         for i in range(len(df)):
-
+            ma = models.TeacherExtra.objects.get('ma_gv')
+            them_user(ma)
+            
             salary = df.loc[i, 'salary']
             joindate = df.loc[i, 'joindate']
             mobile = df.loc[i, 'mobile']
