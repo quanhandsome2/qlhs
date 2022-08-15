@@ -92,3 +92,33 @@ def add_gv(request):
             )
             nk.save()
     return render(request, 'school/admin_import_nk.html')
+
+def add_mon_hoc(request):
+
+    if request.method == "POST" and request.FILES['myfile3']:
+        # Đọc file vào dataframe
+        myfile = request.FILES['myfile3']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        excel_file = uploaded_file_url
+        empexceldata = pd.read_excel("." + excel_file)
+        df = empexceldata
+        print(df)
+
+        for i in range(len(df)):
+
+            ma_mon = df.loc[i, 'ma_mon']
+            mon_tit = df.loc[i, 'mon_tit']
+            ma_khoi_id = df.loc[i, 'ma_khoi_id']
+            ten_mon = df.loc[i, 'ten_mon']
+
+
+            nk = Mon_hoc.objects.create(
+                ma_mon = ma_mon,
+                mon_tit = mon_tit,
+                ma_khoi_id=ma_khoi_id,
+                ten_mon = ten_mon,
+            )
+            nk.save()
+    return render(request, 'school/admin_import_nk.html')
