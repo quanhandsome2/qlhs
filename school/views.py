@@ -55,13 +55,13 @@ def add_nk(request):
         #     last_id = 0
 
         for i in range(len(df)):
-            try:
-                id_set = models.StudentExtra.objects.latest('id')
-                last_id = id_set.id
-            except models.StudentExtra.DoesNotExist:
-                last_id = 0
-            last_id = last_id + 1
-            ma_hs = create_code(last_id, "HS")
+            # try:
+            #     id_set = models.StudentExtra.objects.latest('id')
+            #     last_id = id_set.id
+            # except models.StudentExtra.DoesNotExist:
+            #     last_id = 0
+            # last_id = last_id + 1
+            # ma_hs = create_code(last_id, "HS")
             dia_chi = df.loc[i, "dia_chi"]
             diem_hoa = df.loc[i, "diem_hoa"]
             mobile = df.loc[i, 'mobile']
@@ -89,7 +89,7 @@ def add_nk(request):
             ngay_sinh = df.loc[i, 'ngay_sinh']
             phu_huynh = df.loc[i, 'phu_huynh']
             roll = df.loc[i, 'roll']
-            user = df.loc[i, 'user_id']
+            # user_id = df.loc[i, 'user_id']
 
             nk = models.StudentExtra.objects.create(
                 cl=cl,
@@ -120,7 +120,7 @@ def add_nk(request):
                 mobile=mobile,
                 gioi_tinh=gioi_tinh,
                 ho_ten=ho_ten,
-                user_id=user,
+                # user_id = user_id,
                 ghi_chu=ghi_chu,
             )
             nk.save()
