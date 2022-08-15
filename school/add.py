@@ -56,3 +56,39 @@ def add_khoi(request):
             )
             nk.save()
     return render(request, 'school/admin_import_nk.html')
+
+def add_gv(request):
+
+    if request.method == "POST" and request.FILES['myfile3']:
+        # Đọc file vào dataframe
+        myfile = request.FILES['myfile3']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        excel_file = uploaded_file_url
+        empexceldata = pd.read_excel("." + excel_file)
+        df = empexceldata
+        print(df)
+
+        for i in range(len(df)):
+
+            salary = df.loc[i, 'salary']
+            joindate = df.loc[i, 'joindate']
+            mobile = df.loc[i, 'mobile']
+            user = df.loc[i, 'user_id']
+            gioi_tinh = df.loc[i, 'gioi_tinh']
+            phone = df.loc[i, 'phone']
+            ten_gv = df.loc[i, 'ten_gv']
+
+
+            nk = TeacherExtra.objects.create(
+                salary = salary,
+                joindate = joindate,
+                mobile=mobile,
+                user_id = user,
+                gioi_tinh = gioi_tinh,
+                phone=phone,
+                ten_gv=ten_gv,
+            )
+            nk.save()
+    return render(request, 'school/admin_import_nk.html')
