@@ -141,7 +141,7 @@ def add_lop(request):
             ma_lop = df.loc[i, 'ma_lop']
             ten_lop = df.loc[i, 'ten_lop']
             ma_khoi_id = df.loc[i, 'ma_khoi_id']
-            nien_khoa_id = df.loc[i, 'ten_mon']
+            nien_khoa_id = df.loc[i, 'nien_khoa_id']
             ma_gv_id = df.loc[i, 'ma_gv_id']
 
 
